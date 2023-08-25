@@ -14,7 +14,7 @@ type Initalizator = (ctx: Koa.Context, page: Page) => any;
 type ErrorHandler = (error: Error) => any;
 
 declare module 'koa' {
-	interface Context {
+	interface BaseContext {
 		page?: Page;
 	}
 }
