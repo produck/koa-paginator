@@ -1,0 +1,28 @@
+{
+	"name": "koa-paginator-workspace",
+	"version": "0.0.0",
+	"description": "Koa middleware for processing pagination.",
+	"scripts": {
+		"deps:install": "npm -v && npm i",
+		"lint": "eslint --fix packages/**/*.mjs",
+		"build:pkg": "node ./scripts/build.cjs",
+		"build": "npm run build --workspaces && npm run build:pkg",
+		"test": "npm run test --workspaces --if-present",
+		"coverage": "c8 --exclude=**/*.spec** --reporter=lcov npm run test",
+		"publish": "npm run lint && npm run test && lerna publish"
+	},
+	"keywords": [
+		"koa",
+		"paginator",
+		"page",
+		"middleware"
+	],
+	"workspaces": [
+		"packages/koa-paginator"
+	],
+	"devDependencies": {
+		"c8": "^8.0.1",
+		"eslint": "^8.47.0",
+		"lerna": "^7.1.5"
+	}
+}
