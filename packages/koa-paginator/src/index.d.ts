@@ -1,6 +1,6 @@
 import * as Koa from 'koa'
 
-export class Page<T> {
+export class Page<T = any> {
 	total: number;
 	size: number;
 	number: number;

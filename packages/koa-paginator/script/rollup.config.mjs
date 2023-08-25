@@ -15,7 +15,7 @@ const BANNER =
 
 const moduleList = [
 	{
-		output: path.resolve('src/index.cjs'),
+		output: path.resolve('src/index.gen.cjs'),
 		format: 'cjs',
 		isExternal: true,
 	},
