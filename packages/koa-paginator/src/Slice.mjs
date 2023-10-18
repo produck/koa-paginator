@@ -39,8 +39,8 @@ export class Slice extends Query {
 	}
 
 	toJSON() {
-		const { size, number, total, list, filter } = this;
+		const { index, length, total, list, filter } = this;
 
-		return { size, number, total, list, filter };
+		return { index, length, total, list, filter };
 	}
 }
