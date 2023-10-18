@@ -1,16 +1,8 @@
-export class Page {
-	#total = 0;
+import { Query } from './Query.mjs';
 
-	get total() {
-		return this.#total;
-	}
-
-	set total(value) {
-		if (!Number.isInteger(value) || value < 0) {
-			throw new TypeError('Invalid ".total", one "integer >= 0" expected.');
-		}
-
-		this.#total = value;
+export class Page extends Query {
+	get length() {
+		return this.size;
 	}
 
 	#size = 10;
@@ -25,7 +17,7 @@ export class Page {
 		}
 
 		this.#size = value;
-		this.#list = [];
+		this.list = [];
 	}
 
 	#number = 0;
@@ -42,25 +34,6 @@ export class Page {
 		this.#number = value;
 	}
 
-	#list = [];
-
-	get list() {
-		return [...this.#list];
-	}
-
-	set list(value) {
-		if (!Array.isArray(value)) {
-			throw new TypeError('Invalid ".list", one "array" expected.');
-		}
-
-		if (value.length > this.#size) {
-			throw new Error(`List length(${value.length}) MUST NOT larger then size(${this.#size})`);
-		}
-
-		this.#list.splice(0);
-		this.#list.push(...value);
-	}
-
 	get start() {
 		return this.#number * this.#size;
 	}
@@ -69,15 +42,9 @@ export class Page {
 		return this.start + this.#size;
 	}
 
-	filter = null;
-
 	toJSON() {
 		const { size, number, total, list, filter } = this;
 
 		return { size, number, total, list, filter };
-	}
-
-	constructor() {
-		Object.seal(this);
 	}
 }

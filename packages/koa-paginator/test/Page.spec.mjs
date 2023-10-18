@@ -56,6 +56,14 @@ describe('::Page', function () {
 		});
 	});
 
+	describe('.length', function () {
+		it('should .length === .size', function () {
+			const page = new Paginator.Page();
+
+			assert.equal(page.length, page.size);
+		});
+	});
+
 	describe('.number', function () {
 		it('should get number.', function () {
 			const page = new Paginator.Page();
@@ -101,7 +109,7 @@ describe('::Page', function () {
 
 			assert.throws(() => page.list = new Array(11).fill(null), {
 				name: 'Error',
-				message: 'List length(11) MUST NOT larger then size(10)',
+				message: 'List length(11) MUST NOT > size(10)',
 			});
 		});
 

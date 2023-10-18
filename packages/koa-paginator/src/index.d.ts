@@ -1,13 +1,24 @@
 import * as Koa from 'koa'
 
-export class Page<T = any> {
+export class Query<Item, Filter> {
 	total: number;
+	filter: Filter;
+	readonly length: number;
+	list: Array<Item>;
+}
+
+export class Page<I = any, F = any> extends Query<I, F> {
 	size: number;
 	number: number;
-	list: Array<T>;
 	readonly start: number;
 	readonly end: number;
-	filter: any;
+}
+
+export class Slice<I = any, F = any> extends Query<I, F> {
+	index: number;
+	length: number;
+	readonly start: number;
+	readonly end: number;
 }
 
 type Initalizator = (ctx: Koa.Context, page: Page) => any;
@@ -16,6 +27,7 @@ type ErrorHandler = (error: Error) => any;
 declare module 'koa' {
 	interface BaseContext {
 		page?: Page;
+		slice?: Slice;
 	}
 }
 
