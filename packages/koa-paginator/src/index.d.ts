@@ -1,4 +1,4 @@
-import * as Koa from 'koa'
+import * as Koa from "koa";
 
 export class Query<Item, Filter> {
 	total: number;
@@ -21,14 +21,22 @@ export class Slice<I = any, F = any> extends Query<I, F> {
 	readonly end: number;
 }
 
-type Initalizator = (ctx: Koa.Context, page: Page) => any;
+type Initalizator<Query> = (ctx: Koa.Context, query: Query) => any;
 type ErrorHandler = (error: Error) => any;
 
-declare module 'koa' {
+declare module "koa" {
 	interface BaseContext {
 		page?: Page;
 		slice?: Slice;
 	}
 }
 
-export function Middleware(init: Initalizator, onError?: ErrorHandler): Koa.Middleware;
+type MiddlewareProvider<Query> = (
+	init: Initalizator<Query>,
+	onError?: ErrorHandler
+) => Koa.Middleware;
+
+export module Middleware {
+	export const Page: MiddlewareProvider<Page>;
+	export const Slice: MiddlewareProvider<Slice>;
+}
