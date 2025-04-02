@@ -1,6 +1,6 @@
 {
 	"name": "koa-paginator",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"description": "Koa middleware for processing pagination.",
 	"main": "src/index.gen.cjs",
 	"type": "module",
