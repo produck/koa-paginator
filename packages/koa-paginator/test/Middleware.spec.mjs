@@ -36,7 +36,9 @@ describe('::Middleware', function () {
 			});
 
 			server = app.listen(8080, '::');
-		}).afterAll(function close() {
+		});
+
+		this.afterAll(function close() {
 			server.close();
 		});
 

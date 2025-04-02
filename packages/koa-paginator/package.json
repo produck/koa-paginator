@@ -26,11 +26,7 @@
 	"author": "ChaosLee",
 	"license": "MIT",
 	"devDependencies": {
-		"@types/koa": "^2.13.10",
-		"@types/mocha": "^10.0.3",
-		"@types/node": "^20.8.7",
-		"koa": "^2.14.2",
-		"mocha": "^10.2.0",
-		"rollup": "^4.1.4"
+		"@types/koa": "^2.15.0",
+		"koa": "^2.16.0"
 	}
 }
